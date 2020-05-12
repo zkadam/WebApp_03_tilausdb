@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebApp_03_tilausdb.Models.Tuotteet>
+
+@{
+    ViewBag.Title = "ProdCards";
+}
+
+<h2>ProdCards</h2>
+
+
+
+
+
+<div style="width:98%; height:98%; ">
+    @foreach (var item in Model)
+    {
+        <div class="card text-white bg-info mb-3" style="max-width: 98%;max-height:50%; min-width:30%;min-height:5rem; float:right; margin-left:3px">
+            <div class="card-header">@item.Nimi</div>
+            <div class="card-body" style="min-height:200px; min-width:25%; max-width:98%">
+                <h4 class="card-title">@item.Ahinta €</h4>
+                <div class="card-img" style="text-align:center; display:inline-block">
+                    @if (item.Kuvalinkki == null)
+                    {
+                        <img style="height: 200px; max-width: 90%; display: block; " src="https://cdn.pixabay.com/photo/2015/07/19/11/05/panels-851426_1280.jpg" alt="Kuva" />
+                    }
+                    else
+                    {
+                        <img style="height: 200px; max-width: 90%; display: block; position:center" src="@item.Kuvalinkki" alt="Kuva" />
+
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    }
+    </div>
+   
+
+
+
+
+
+

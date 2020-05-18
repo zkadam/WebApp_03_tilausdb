@@ -26,31 +26,49 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-hover table-striped" style="background-color:white">
-    <tr>
-        <th>@Html.DisplayNameFor(model => model.Toimitusosoite)</th>
-        <th>@Html.DisplayNameFor(model => model.Tilauspvm)</th>
-        <th>@Html.DisplayNameFor(model => model.Toimituspvm)</th>
-        <th>@Html.DisplayNameFor(model => model.Asiakkaat.Nimi)</th>
-        <th>@Html.DisplayNameFor(model => model.Postitoimipaikat.Postitoimipaikka)</th>
 
-        <th></th>
-    </tr>
+<div class="container-fluid">
+    <div class="triviHeader">
+        <div class="triviH">@Html.DisplayNameFor(model => model.TilausID)</div>
 
-@foreach (var item in Model) {
-<tr class="showOrderClass" data-orderid="@item.TilausID">
-    <td>@Html.DisplayFor(modelItem => item.Toimitusosoite)</td>
-    <td>@Html.DisplayFor(modelItem => item.Tilauspvm)</td>
-    <td>@Html.DisplayFor(modelItem => item.Toimituspvm)</td>
-    <td>@Html.DisplayFor(modelItem => item.Asiakkaat.Nimi)</td>
-    <td>@Html.DisplayFor(modelItem => item.Postitoimipaikat.Postitoimipaikka)</td>
+        <div class="triviH">@Html.DisplayNameFor(model => model.Toimitusosoite)</div>
+        <div class="triviH">@Html.DisplayNameFor(model => model.Tilauspvm)</div>
+        <div class="triviH">@Html.DisplayNameFor(model => model.Toimituspvm)</div>
+        <div class="triviH">@Html.DisplayNameFor(model => model.Asiakkaat.Nimi)</div>
+        <div class="triviH">@Html.DisplayNameFor(model => model.Postitoimipaikat.Postitoimipaikka)</div>
 
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.TilausID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.TilausID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.TilausID })
-    </td>
-</tr>
-}
+        @*<th></th>*@
+    </div>
 
-</table>
+
+
+
+    <div id="accordion">
+
+
+        @foreach (var item in Model)
+        {
+                       
+                                <div class="card triviR">
+                                    <div class="card-header">
+                                        <a class="card-link showOrderClass" data-orderid="@item.TilausID" data-toggle="collapse" href="#collapse_@item.TilausID">
+                                            <div>
+                                                <div class="trivi">@Html.DisplayFor(modelItem => item.TilausID)</div>
+
+                                                <div class="trivi">@Html.DisplayFor(modelItem => item.Toimitusosoite)</div>
+                                                <div class="trivi">@Html.DisplayFor(modelItem => item.Tilauspvm)</div>
+                                                <div class="trivi">@Html.DisplayFor(modelItem => item.Toimituspvm)</div>
+                                                <div class="trivi">@Html.DisplayFor(modelItem => item.Asiakkaat.Nimi)</div>
+                                                <div class="trivi">@Html.DisplayFor(modelItem => item.Postitoimipaikat.Postitoimipaikka)</div>
+                                            </div>
+
+
+                                        </a>
+                                    </div>
+
+               
+                                </div>
+                       
+                    }
+    </div>
+</div>

@@ -9,6 +9,32 @@ th {
     color: white;
 }
 
+/*tänne sitten tilaus rivit varten div muotoilut ---ZK*/
+
+.triviHeader {
+    background-color: #004466;
+    color: white;
+    vertical-align: middle;
+}
+
+.triviH {
+  
+    display: inline-block;
+    vertical-align: middle;
+    width: 16%;
+}
+.trivi {
+    color: black;
+    display: inline-block;
+    vertical-align: middle;
+    width: 16%;
+}
+.triviR {
+    background-color: #e3f9ff;
+}
+    .triviR:nth-child(odd) {
+        background-color: #e8faff;
+    }
 
 
 

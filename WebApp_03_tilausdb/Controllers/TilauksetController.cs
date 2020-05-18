@@ -196,6 +196,15 @@ namespace WebApp_03_tilausdb.Controllers
         }
 
 
+        public ActionResult TilausRivit()
+        {
+            var tilauskset = db.Tilaukset;
+            return View(tilauskset.ToList());
+
+        }
+
+
+
 
         protected override void Dispose(bool disposing)
         {

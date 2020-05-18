@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApp_03_tilausdb.Models.Tilaukset>
+
+@{
+    ViewBag.Title = "TilausRivit";
+}
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(function () {
+            $(".showOrderClass").click(function () {
+                let orderId = $(this).data("orderid");
+                alert("Klikkasit tilausnumeroa: " + orderId);
+            });
+
+        });
+
+
+
+    </script>
+    
+    
+    } 
+<h2>TilausRivit</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-hover table-striped" style="background-color:white">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Toimitusosoite)</th>
+        <th>@Html.DisplayNameFor(model => model.Tilauspvm)</th>
+        <th>@Html.DisplayNameFor(model => model.Toimituspvm)</th>
+        <th>@Html.DisplayNameFor(model => model.Asiakkaat.Nimi)</th>
+        <th>@Html.DisplayNameFor(model => model.Postitoimipaikat.Postitoimipaikka)</th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr class="showOrderClass" data-orderid="@item.TilausID">
+    <td>@Html.DisplayFor(modelItem => item.Toimitusosoite)</td>
+    <td>@Html.DisplayFor(modelItem => item.Tilauspvm)</td>
+    <td>@Html.DisplayFor(modelItem => item.Toimituspvm)</td>
+    <td>@Html.DisplayFor(modelItem => item.Asiakkaat.Nimi)</td>
+    <td>@Html.DisplayFor(modelItem => item.Postitoimipaikat.Postitoimipaikka)</td>
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.TilausID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.TilausID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.TilausID })
+    </td>
+</tr>
+}
+
+</table>

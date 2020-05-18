@@ -358,9 +358,11 @@
     <Content Include="Views\Tilausrivit\Delete.cshtml" />
     <Content Include="Views\Tuotteets\ProdCards.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Tilaukset\TilausRivit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

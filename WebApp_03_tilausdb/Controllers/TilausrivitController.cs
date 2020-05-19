@@ -22,7 +22,7 @@ namespace WebApp_03_tilausdb.Controllers
             else
             {
                 List<Tilausrivit> tilausrivit = db.Tilausrivit.ToList();
-                return View(tilausrivit);
+                return PartialView(tilausrivit);
 
             }
            

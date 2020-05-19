@@ -176,6 +176,7 @@
     <Compile Include="Models\Tuotteet.cs">
       <DependentUpon>tilausDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\TilausRivit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -358,6 +359,8 @@
     <Content Include="Views\Tilausrivit\Delete.cshtml" />
     <Content Include="Views\Tuotteets\ProdCards.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Tilaukset\TilausRivit.cshtml" />
+    <Content Include="Views\Tilaukset\_TilausRivi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

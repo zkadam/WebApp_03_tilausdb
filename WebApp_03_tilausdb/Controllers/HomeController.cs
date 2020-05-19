@@ -30,7 +30,7 @@ namespace WebApp_03_tilausdb.Controllers
             else
             {
                 ViewBag.LoginMessage = "Login unsuccessfull";
-               /* ViewBag.LoggedStatus = "Log in"*/;
+                ViewBag.LoggedStatus = "Log in";
                 LoginModel.LoginErrorMessage = "Tuntematon käyttäjätunnus tai salasana.";
                 return View("Login", LoginModel);
             }

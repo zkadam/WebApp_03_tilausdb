@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebApp_03_tilausdb.Models.Tilausrivit>
+
+@{
+    ViewBag.Title = "_TilausRivi";
+}
+
+
+
+<table class="table" style="background-color:#dae1f2;">
+    <tr style="        background-color: #254285;
+        color: white;">
+        <th>
+           Ostettu määrä
+        </th>
+        <th>
+           Hinta / kpl
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tilaukset.Toimitusosoite)
+        </th>
+        <th>
+            Tuotteen nimi
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Maara)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ahinta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tilaukset.Toimitusosoite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tuotteet.Nimi)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TilausriviID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TilausriviID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TilausriviID })
+        </td>*@
+    </tr>
+}
+
+</table>

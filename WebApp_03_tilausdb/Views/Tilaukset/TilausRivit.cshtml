@@ -9,8 +9,16 @@
 
         $(function () {
             $(".showOrderClass").click(function () {
-                let orderId = $(this).data("orderid");
-                //alert("Klikkasit tilausnumeroa: " + orderId);
+                let tilausId = $(this).data("tilausid");
+                //alert("Klikkasit tilausnumeroa: " + tilausId);
+                var url = "/Tilaukset/_TilausRivi/?tilausid=" + tilausId;
+                $("#tilausDetails_" + tilausId).append("<b>Ladataan tilauksen " + tilausId + " tivejä...</b>");
+
+                //replaceng div with the data that we get from kontroller/partialview
+                var $detailDiv = $("#tilausDetails_" + tilausId);
+                $.get(url, function (data) {
+                    $detailDiv.replaceWith(data);
+                });
             });
 
         });
@@ -34,7 +42,7 @@
         <div class="triviH">@Html.DisplayNameFor(model => model.Toimitusosoite)</div>
         <div class="triviH">@Html.DisplayNameFor(model => model.Tilauspvm)</div>
         <div class="triviH">@Html.DisplayNameFor(model => model.Toimituspvm)</div>
-        <div class="triviH">@Html.DisplayNameFor(model => model.Asiakkaat.Nimi)</div>
+        <div class="triviH">Asiakas nimi</div>
         <div class="triviH">@Html.DisplayNameFor(model => model.Postitoimipaikat.Postitoimipaikka)</div>
 
         @*<th></th>*@
@@ -50,7 +58,7 @@
         {
                        
         <div class="card">
-                <a class="card-link showOrderClass" data-orderid="@item.TilausID" data-toggle="collapse" href="#collapse_@item.TilausID">
+                <a class="card-link showOrderClass" data-tilausid="@item.TilausID" data-toggle="collapse" href="#collapse_@item.TilausID">
             <div class="card-header triviR">
                     <div>
                         <div class="trivi">@Html.DisplayFor(modelItem => item.TilausID)</div>
@@ -67,7 +75,7 @@
                 </a>
             <div id="collapse_@item.TilausID" class="collapse" data-parent="#accordion">
                 <div class="card-body">
-                    Lorem ipsum..
+                        <div id="tilausDetails_@item.TilausID"></div>
                 </div>
             </div>
 

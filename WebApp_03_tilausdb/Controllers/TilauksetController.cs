@@ -195,7 +195,7 @@ namespace WebApp_03_tilausdb.Controllers
             return RedirectToAction("Index");
         }
 
-
+        //---------------------------------------------Master view hommia-------------------------------------------//
         public ActionResult TilausRivit()
         {
             var tilauskset = db.Tilaukset;
@@ -205,8 +205,8 @@ namespace WebApp_03_tilausdb.Controllers
         // partial view tilausrivien varten
         public ActionResult _TilausRivi(int? tilausid)
         {
-            var tilausrivit = db.Tilausrivit.Include(t => t.Tilaukset).Include(t => t.Tuotteet);
-            return View(tilausrivit.ToList());
+            var tilausrivit = db.Tilausrivit.Where(t => t.TilausID==tilausid).Include(t => t.Tilaukset).Include(t => t.Tuotteet);
+            return PartialView(tilausrivit.ToList());
 
 
             

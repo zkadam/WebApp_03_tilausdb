@@ -7,30 +7,34 @@
 th {
     background-color: #004466;
     color: white;
+
 }
 
 /*tänne sitten tilaus rivit varten div muotoilut ---ZK*/
 
 .triviHeader {
+    padding: 4px;
     background-color: #004466;
     color: white;
-    vertical-align: middle;
+    text-align: left;
 }
 
 .triviH {
-  
     display: inline-block;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
     width: 16%;
+    text-align: left;
 }
 .trivi {
     color: black;
     display: inline-block;
     vertical-align: middle;
     width: 16%;
+    text-align: left;
 }
 .triviR {
     background-color: #e3f9ff;
+  
 }
     .triviR:nth-child(odd) {
         background-color: #e8faff;

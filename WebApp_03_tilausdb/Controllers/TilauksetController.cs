@@ -202,6 +202,15 @@ namespace WebApp_03_tilausdb.Controllers
             return View(tilauskset.ToList());
 
         }
+        // partial view tilausrivien varten
+        public ActionResult _TilausRivi(int? tilausid)
+        {
+            var tilausrivit = db.Tilausrivit.Include(t => t.Tilaukset).Include(t => t.Tuotteet);
+            return View(tilausrivit.ToList());
+
+
+            
+        }
 
 
 

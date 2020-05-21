@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-hover" style="background-color:#56bdd8">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.TilausID)
@@ -17,43 +17,44 @@
         <th>
             @Html.DisplayNameFor(model => model.TilausriviID)
         </th>
-         <th>
-                @Html.DisplayNameFor(model => model.Maara)
-          </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ahinta)
-            </th>
-            
+        <th>
+            @Html.DisplayNameFor(model => model.Maara)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ahinta)
+        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Tuotteet.Nimi)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TilausID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TilausriviID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Maara)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ahinta)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Tuotteet.Nimi)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TilausriviID }) |
-            
-            @Html.ActionLink("Delete", "Delete", new { id=item.TilausriviID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TilausID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TilausriviID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maara)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ahinta)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Tuotteet.Nimi)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TilausriviID }) |
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.TilausriviID })
+            </td>
+        </tr>
+    }
 
 </table>

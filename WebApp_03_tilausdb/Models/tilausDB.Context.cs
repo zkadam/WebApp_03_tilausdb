@@ -32,5 +32,7 @@ namespace WebApp_03_tilausdb.Models
         public virtual DbSet<Tilausrivit> Tilausrivit { get; set; }
         public virtual DbSet<Tuotteet> Tuotteet { get; set; }
         public virtual DbSet<Logins> Logins { get; set; }
+        public virtual DbSet<tilaus_maaria_arkipaivissa> tilaus_maaria_arkipaivissa { get; set; }
+        public virtual DbSet<top10_tuote_income> top10_tuote_income { get; set; }
     }
 }

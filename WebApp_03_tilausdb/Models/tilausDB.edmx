@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TilausDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TilausDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Asiakkaat">
           <Key>
             <PropertyRef Name="AsiakasID" />
@@ -72,37 +72,17 @@
           <Property Name="Kuvalinkki" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'TilausDB.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="LoginID" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="Password" />
-          </Key>
-          <Property Name="LoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TilausDB.dbo.tilaus maaria arkipaivissa' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6013: The table/view 'TilausDB.dbo.tilaus maaria arkipaivissa' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="tilaus maaria arkipaivissa">
-          <Key>
-            <PropertyRef Name="Row#" />
-          </Key>
-          <Property Name="Row#" Type="int" Nullable="false" />
-          <Property Name="viikkopaiva" Type="nvarchar" MaxLength="30" />
+          <Property Name="valami" Type="nvarchar" MaxLength="30" />
           <Property Name="number of orders" Type="int" />
-        </EntityType>
+        </EntityType>-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6013: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="top10_tuote_income">
-          <Key>
-            <PropertyRef Name="Rownumber" />
-          </Key>
-          <Property Name="Rownumber" Type="int" Nullable="false" />
           <Property Name="product name" Type="varchar" MaxLength="50" />
           <Property Name="income from product" Type="numeric" Precision="38" Scale="2" />
-        </EntityType>
+        </EntityType>-->
         <Association Name="FK_Asiakkaat_Postitoimipaikat">
           <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="0..1" />
           <End Role="Asiakkaat" Type="Self.Asiakkaat" Multiplicity="*" />
@@ -171,27 +151,6 @@ warning 6002: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a p
           <EntitySet Name="Tilaukset" EntityType="Self.Tilaukset" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tilausrivit" EntityType="Self.Tilausrivit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tuotteet" EntityType="Self.Tuotteet" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Users].[LoginID] AS [LoginID], 
-    [Users].[UserName] AS [UserName], 
-    [Users].[Password] AS [Password]
-    FROM [dbo].[Users] AS [Users]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="tilaus maaria arkipaivissa" EntityType="Self.tilaus maaria arkipaivissa" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [tilaus maaria arkipaivissa].[Row#] AS [Row#], 
-    [tilaus maaria arkipaivissa].[viikkopaiva] AS [viikkopaiva], 
-    [tilaus maaria arkipaivissa].[number of orders] AS [number of orders]
-    FROM [dbo].[tilaus maaria arkipaivissa] AS [tilaus maaria arkipaivissa]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="top10_tuote_income" EntityType="Self.top10_tuote_income" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [top10_tuote_income].[Rownumber] AS [Rownumber], 
-    [top10_tuote_income].[product name] AS [product name], 
-    [top10_tuote_income].[income from product] AS [income from product]
-    FROM [dbo].[top10_tuote_income] AS [top10_tuote_income]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Asiakkaat_Postitoimipaikat" Association="Self.FK_Asiakkaat_Postitoimipaikat">
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Asiakkaat" EntitySet="Asiakkaat" />
@@ -213,8 +172,7 @@ warning 6002: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a p
             <End Role="Tilausrivit" EntitySet="Tilausrivit" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TilausDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -240,14 +198,6 @@ warning 6002: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a p
           <Property Name="Esimies" Type="Int32" />
           <Property Name="Postinumero" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Sahkoposti" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Logins">
-          <Key>
-            <PropertyRef Name="LoginId" />
-          </Key>
-          <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Postitoimipaikat">
           <Key>
@@ -291,34 +241,8 @@ warning 6002: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a p
           <Property Name="TuoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nimi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Ahinta" Type="Decimal" Precision="7" Scale="2" />
-          <Property Name="Kuvalinkki" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Tilausrivit" Relationship="Self.FK_Tilausrivit_Tuotteet" FromRole="Tuotteet" ToRole="Tilausrivit" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="LoginID" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="Password" />
-          </Key>
-          <Property Name="LoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tilaus_maaria_arkipaivissa">
-          <Key>
-            <PropertyRef Name="Row_" />
-          </Key>
-          <Property Name="Row_" Type="Int32" Nullable="false" />
-          <Property Name="viikkopaiva" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="number_of_orders" Type="Int32" />
-        </EntityType>
-        <EntityType Name="top10_tuote_income">
-          <Key>
-            <PropertyRef Name="Rownumber" />
-          </Key>
-          <Property Name="Rownumber" Type="Int32" Nullable="false" />
-          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="income_from_product" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="Kuvalinkki" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Asiakkaat_Postitoimipaikat">
           <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="0..1" />
@@ -380,17 +304,13 @@ warning 6002: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TilausDBEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TilausDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Asiakkaat" EntityType="Self.Asiakkaat" />
           <EntitySet Name="Henkilot" EntityType="Self.Henkilot" />
-          <EntitySet Name="Logins" EntityType="Self.Logins" />
           <EntitySet Name="Postitoimipaikat" EntityType="Self.Postitoimipaikat" />
           <EntitySet Name="Tilaukset" EntityType="Self.Tilaukset" />
           <EntitySet Name="Tilausrivit" EntityType="Self.Tilausrivit" />
           <EntitySet Name="Tuotteet" EntityType="Self.Tuotteet" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
-          <EntitySet Name="tilaus_maaria_arkipaivissa" EntityType="Self.tilaus_maaria_arkipaivissa" />
-          <EntitySet Name="top10_tuote_income" EntityType="Self.top10_tuote_income" />
           <AssociationSet Name="FK_Asiakkaat_Postitoimipaikat" Association="Self.FK_Asiakkaat_Postitoimipaikat">
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Asiakkaat" EntitySet="Asiakkaat" />
@@ -411,13 +331,22 @@ warning 6002: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a p
             <End Role="Tuotteet" EntitySet="Tuotteet" />
             <End Role="Tilausrivit" EntitySet="Tilausrivit" />
           </AssociationSet>
+          <EntitySet Name="Logins" EntityType="TilausDBModel.Logins" />
         </EntityContainer>
+        <EntityType Name="Logins">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassWord" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TilausDBModelStoreContainer" CdmEntityContainer="TilausDBEntities1">
+        <EntityContainerMapping StorageEntityContainer="TilausDBModelStoreContainer" CdmEntityContainer="TilausDBEntities">
           <EntitySetMapping Name="Asiakkaat">
             <EntityTypeMapping TypeName="TilausDBModel.Asiakkaat">
               <MappingFragment StoreEntitySet="Asiakkaat">
@@ -438,15 +367,6 @@ warning 6002: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a p
                 <ScalarProperty Name="Esimies" ColumnName="Esimies" />
                 <ScalarProperty Name="Postinumero" ColumnName="Postinumero" />
                 <ScalarProperty Name="Sahkoposti" ColumnName="Sahkoposti" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Logins">
-            <EntityTypeMapping TypeName="TilausDBModel.Logins">
-              <MappingFragment StoreEntitySet="Logins">
-                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -484,37 +404,19 @@ warning 6002: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a p
           <EntitySetMapping Name="Tuotteet">
             <EntityTypeMapping TypeName="TilausDBModel.Tuotteet">
               <MappingFragment StoreEntitySet="Tuotteet">
+                <ScalarProperty Name="Kuvalinkki" ColumnName="Kuvalinkki" />
                 <ScalarProperty Name="TuoteID" ColumnName="TuoteID" />
                 <ScalarProperty Name="Nimi" ColumnName="Nimi" />
                 <ScalarProperty Name="Ahinta" ColumnName="Ahinta" />
-                <ScalarProperty Name="Kuvalinkki" ColumnName="Kuvalinkki" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="TilausDBModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="TilausDBModel.Logins">
+              <MappingFragment StoreEntitySet="Logins">
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tilaus_maaria_arkipaivissa">
-            <EntityTypeMapping TypeName="TilausDBModel.tilaus_maaria_arkipaivissa">
-              <MappingFragment StoreEntitySet="tilaus maaria arkipaivissa">
-                <ScalarProperty Name="Row_" ColumnName="Row#" />
-                <ScalarProperty Name="viikkopaiva" ColumnName="viikkopaiva" />
-                <ScalarProperty Name="number_of_orders" ColumnName="number of orders" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="top10_tuote_income">
-            <EntityTypeMapping TypeName="TilausDBModel.top10_tuote_income">
-              <MappingFragment StoreEntitySet="top10_tuote_income">
-                <ScalarProperty Name="Rownumber" ColumnName="Rownumber" />
-                <ScalarProperty Name="product_name" ColumnName="product name" />
-                <ScalarProperty Name="income_from_product" ColumnName="income from product" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

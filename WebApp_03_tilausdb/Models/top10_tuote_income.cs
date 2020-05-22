@@ -12,10 +12,10 @@ namespace WebApp_03_tilausdb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Logins
+    public partial class top10_tuote_income
     {
-        public int LoginId { get; set; }
-        public string UserName { get; set; }
-        public string PassWord { get; set; }
+        public int Rownumber { get; set; }
+        public string product_name { get; set; }
+        public Nullable<decimal> income_from_product { get; set; }
     }
 }

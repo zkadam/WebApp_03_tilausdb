@@ -94,7 +94,7 @@ namespace WebApp_03_tilausdb.Controllers
         }
 
         //---------------------------------------------------------------------EDIT---------------------------------------------------------------------------------------
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int ?id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Tilaukset muokattavaTilaus = db.Tilaukset.Find(id);
@@ -170,7 +170,7 @@ namespace WebApp_03_tilausdb.Controllers
         }
 
 //----------------------------------------------------------------------------------------DELETE---------------------------------------------------------------------------
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {

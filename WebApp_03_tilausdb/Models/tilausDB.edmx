@@ -72,7 +72,17 @@
           <Property Name="Kuvalinkki" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'TilausDB.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6013: The table/view 'TilausDB.dbo.tilaus maaria arkipaivissa' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tilaus maaria arkipaivissa">
+          <Property Name="valami" Type="nvarchar" MaxLength="30" />
+          <Property Name="number of orders" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="top10_tuote_income">
+          <Property Name="product name" Type="varchar" MaxLength="50" />
+          <Property Name="income from product" Type="numeric" Precision="38" Scale="2" />
+        </EntityType>-->
         <Association Name="FK_Asiakkaat_Postitoimipaikat">
           <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="0..1" />
           <End Role="Asiakkaat" Type="Self.Asiakkaat" Multiplicity="*" />

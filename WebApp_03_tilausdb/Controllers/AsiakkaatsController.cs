@@ -189,7 +189,7 @@ namespace WebApp_03_tilausdb.Controllers
         }
 
         // GET: Asiakkaats/-------------------------------------------------------Delete----------------------------------------------
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             if (Session["UserName"] == null)
             {
@@ -215,7 +215,7 @@ namespace WebApp_03_tilausdb.Controllers
         // POST: Asiakkaats/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             if (Session["UserName"] == null)
             {

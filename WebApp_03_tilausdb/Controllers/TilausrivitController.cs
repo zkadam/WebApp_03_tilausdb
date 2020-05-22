@@ -246,7 +246,7 @@ namespace WebApp_03_tilausdb.Controllers
         }
 
         // GET: Asiakkaats/-------------------------------------------------------Delete----------------------------------------------
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             if (Session["UserName"] == null)
             {

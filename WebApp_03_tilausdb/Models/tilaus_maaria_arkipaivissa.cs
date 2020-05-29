@@ -17,5 +17,6 @@ namespace WebApp_03_tilausdb.Models
         public long Rivinro { get; set; }
         public string viikkopaiva { get; set; }
         public Nullable<int> number_of_orders { get; set; }
+        //public int number_of_orders { get; set; }
     }
 }

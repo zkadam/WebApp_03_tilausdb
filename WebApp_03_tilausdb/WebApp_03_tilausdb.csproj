@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AsiakkaatsController.cs" />
     <Compile Include="Controllers\PostitoimipaikatController.cs" />
+    <Compile Include="Controllers\StatisticCharts.cs" />
     <Compile Include="Controllers\TilauksetController.cs" />
     <Compile Include="Controllers\TilausrivitController.cs" />
     <Compile Include="Controllers\TuotteetsController.cs" />
@@ -372,6 +373,12 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\StatisticCharts\Create.cshtml" />
+    <Content Include="Views\StatisticCharts\Delete.cshtml" />
+    <Content Include="Views\StatisticCharts\Details.cshtml" />
+    <Content Include="Views\StatisticCharts\Edit.cshtml" />
+    <Content Include="Views\StatisticCharts\Index.cshtml" />
+    <Content Include="Views\StatisticCharts\TilausMaariaArkipaivissa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

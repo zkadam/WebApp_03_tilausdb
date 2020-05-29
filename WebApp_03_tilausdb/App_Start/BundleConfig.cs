@@ -20,6 +20,11 @@ namespace WebApp_03_tilausdb
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+
+            //chart js included for graphs
+              bundles.Add(new ScriptBundle("~/bundles/chart").Include(
+                        "~/Scripts/chart.js-*"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 

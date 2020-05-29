@@ -1,0 +1,42 @@
+﻿@model WebApp_03_tilausdb.Models.tilaus_maaria_arkipaivissa
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>tilaus_maaria_arkipaivissa</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.viikkopaiva)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.viikkopaiva)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.number_of_orders)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.number_of_orders)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Rivinro }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

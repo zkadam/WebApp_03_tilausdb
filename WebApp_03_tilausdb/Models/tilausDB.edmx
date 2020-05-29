@@ -72,7 +72,25 @@
           <Property Name="Kuvalinkki" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'TilausDB.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'TilausDB.dbo.tilaus maaria arkipaivissa' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tilaus maaria arkipaivissa">
+          <Key>
+            <PropertyRef Name="Rivinro" />
+          </Key>
+          <Property Name="Rivinro" Type="bigint" Nullable="false" />
+          <Property Name="viikkopaiva" Type="nvarchar" MaxLength="30" />
+          <Property Name="number of orders" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TilausDB.dbo.top10_tuote_income' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="top10_tuote_income">
+          <Key>
+            <PropertyRef Name="Rivinro" />
+          </Key>
+          <Property Name="Rivinro" Type="bigint" Nullable="false" />
+          <Property Name="product name" Type="varchar" MaxLength="50" />
+          <Property Name="income from product" Type="numeric" Precision="38" Scale="2" />
+        </EntityType>
         <Association Name="FK_Asiakkaat_Postitoimipaikat">
           <End Role="Postitoimipaikat" Type="Self.Postitoimipaikat" Multiplicity="0..1" />
           <End Role="Asiakkaat" Type="Self.Asiakkaat" Multiplicity="*" />
@@ -141,6 +159,20 @@ warning 6002: The table/view 'TilausDB.dbo.Users' does not have a primary key de
           <EntitySet Name="Tilaukset" EntityType="Self.Tilaukset" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tilausrivit" EntityType="Self.Tilausrivit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tuotteet" EntityType="Self.Tuotteet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tilaus maaria arkipaivissa" EntityType="Self.tilaus maaria arkipaivissa" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tilaus maaria arkipaivissa].[Rivinro] AS [Rivinro], 
+    [tilaus maaria arkipaivissa].[viikkopaiva] AS [viikkopaiva], 
+    [tilaus maaria arkipaivissa].[number of orders] AS [number of orders]
+    FROM [dbo].[tilaus maaria arkipaivissa] AS [tilaus maaria arkipaivissa]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="top10_tuote_income" EntityType="Self.top10_tuote_income" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [top10_tuote_income].[Rivinro] AS [Rivinro], 
+    [top10_tuote_income].[product name] AS [product name], 
+    [top10_tuote_income].[income from product] AS [income from product]
+    FROM [dbo].[top10_tuote_income] AS [top10_tuote_income]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Asiakkaat_Postitoimipaikat" Association="Self.FK_Asiakkaat_Postitoimipaikat">
             <End Role="Postitoimipaikat" EntitySet="Postitoimipaikat" />
             <End Role="Asiakkaat" EntitySet="Asiakkaat" />
@@ -322,6 +354,8 @@ warning 6002: The table/view 'TilausDB.dbo.Users' does not have a primary key de
             <End Role="Tilausrivit" EntitySet="Tilausrivit" />
           </AssociationSet>
           <EntitySet Name="Logins" EntityType="TilausDBModel.Logins" />
+          <EntitySet Name="tilaus_maaria_arkipaivissa" EntityType="TilausDBModel.tilaus_maaria_arkipaivissa" />
+          <EntitySet Name="top10_tuote_income" EntityType="TilausDBModel.top10_tuote_income" />
         </EntityContainer>
         <EntityType Name="Logins">
           <Key>
@@ -330,6 +364,22 @@ warning 6002: The table/view 'TilausDB.dbo.Users' does not have a primary key de
           <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PassWord" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tilaus_maaria_arkipaivissa">
+          <Key>
+            <PropertyRef Name="Rivinro" />
+          </Key>
+          <Property Name="Rivinro" Type="Int64" Nullable="false" />
+          <Property Name="viikkopaiva" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="number_of_orders" Type="Int32" />
+        </EntityType>
+        <EntityType Name="top10_tuote_income">
+          <Key>
+            <PropertyRef Name="Rivinro" />
+          </Key>
+          <Property Name="Rivinro" Type="Int64" Nullable="false" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="income_from_product" Type="Decimal" Precision="38" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -407,6 +457,24 @@ warning 6002: The table/view 'TilausDB.dbo.Users' does not have a primary key de
                 <ScalarProperty Name="PassWord" ColumnName="PassWord" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tilaus_maaria_arkipaivissa">
+            <EntityTypeMapping TypeName="TilausDBModel.tilaus_maaria_arkipaivissa">
+              <MappingFragment StoreEntitySet="tilaus maaria arkipaivissa">
+                <ScalarProperty Name="number_of_orders" ColumnName="number of orders" />
+                <ScalarProperty Name="viikkopaiva" ColumnName="viikkopaiva" />
+                <ScalarProperty Name="Rivinro" ColumnName="Rivinro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="top10_tuote_income">
+            <EntityTypeMapping TypeName="TilausDBModel.top10_tuote_income">
+              <MappingFragment StoreEntitySet="top10_tuote_income">
+                <ScalarProperty Name="income_from_product" ColumnName="income from product" />
+                <ScalarProperty Name="product_name" ColumnName="product name" />
+                <ScalarProperty Name="Rivinro" ColumnName="Rivinro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

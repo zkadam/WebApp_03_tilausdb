@@ -150,6 +150,12 @@
     <Compile Include="Models\Postitoimipaikat.cs">
       <DependentUpon>tilausDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tilaus_maaria_arkipaivissa.cs">
+      <DependentUpon>tilausDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\top10_tuote_income.cs">
+      <DependentUpon>tilausDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Tilaukset.cs">
       <DependentUpon>tilausDB.tt</DependentUpon>

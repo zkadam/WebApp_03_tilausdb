@@ -17,6 +17,8 @@
         <AssociationConnector Association="TilausDBModel.FK_Tilausrivit_Tilaukset" ManuallyRouted="false" />
         <AssociationConnector Association="TilausDBModel.FK_Tilausrivit_Tuotteet" ManuallyRouted="false" />
         <EntityTypeShape EntityType="TilausDBModel.Logins" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="TilausDBModel.tilaus_maaria_arkipaivissa" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="TilausDBModel.top10_tuote_income" Width="1.5" PointX="2.75" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

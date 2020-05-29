@@ -1,10 +1,4 @@
 ﻿
-@{
-    ViewBag.Title = "TilausMaariaArkipaivissa";
-}
-
-<h2>TilausMaariaArkipaivissa</h2>
-
 @model IEnumerable<WebApp_03_tilausdb.Models.tilaus_maaria_arkipaivissa>
 
 
@@ -24,15 +18,15 @@ var myChart = new Chart(ctx, {
     data: {
         labels: labelTexts,
         datasets: [{
-            label: 'Sales in money per category',
+            label: 'Myynit/arkipäivä',
             data: dataValues,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -64,14 +58,7 @@ var myChart = new Chart(ctx, {
 @*-------------------------------------------needs jquery to import data*@
 <h2>Tilaumääriä arkipäivissä</h2>
 
-<h3>
-    @ViewBag.daysMaPe
-</h3>
-<h3>
 
-@ViewBag.TilauksetMaPe
-
-</h3>
 
 <div class="container">
     <div class="row">

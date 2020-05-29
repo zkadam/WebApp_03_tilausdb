@@ -1,42 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApp_03_tilausdb.Models;
+using WebApp_03_tilausdb.ViewModel;
 
 namespace WebApp_03_tilausdb.Controllers
 {
-    public class StatisticCharts : Controller
+    public class ChartsController : Controller
     {
         private TilausDBEntities db = new TilausDBEntities();
+        // GET: Charts
+        public ActionResult Index()
+        {
+            return View();
+        }
 
-        // GET: StatisticCharts
+
+
         public ActionResult TilausMaariaArkipaivissa()
         {
 
             string daysMaPeList;
-            //string TilauksetMaPeList;
-            List<tilaus_maaria_arkipaivissa> TilauksetMaPeList = new List<tilaus_maaria_arkipaivissa>();
+            string tilauksetMaPeList;//huom pieni t alussa eli tää on vain string
+            List<arkiMyyntiClass> TilauksetMaPeList = new List<arkiMyyntiClass>();
 
             var arkiSales = from arkis in db.tilaus_maaria_arkipaivissa
-                                    select arkis;
+                            select arkis;
             foreach (tilaus_maaria_arkipaivissa tilauksetMaPe in arkiSales)
             {
-                tilaus_maaria_arkipaivissa yksKentta = new tilaus_maaria_arkipaivissa();
+                arkiMyyntiClass yksKentta = new arkiMyyntiClass();
                 yksKentta.viikkopaiva = tilauksetMaPe.viikkopaiva;//nämä ovat databasein tableviewin kentät
-                yksKentta.number_of_orders = tilauksetMaPe.number_of_orders;
+                yksKentta.number_of_orders = tilauksetMaPe.number_of_orders;//nämä ovat databasein tableviewin kentät
                 TilauksetMaPeList.Add(yksKentta);
             }
             //string joinnilla viedään kaikki list elementtit kaks string riviin x ja y varteen- laitetaan pilkut ja qmarksit väliin
-            daysMaPeList = "'" + string.Join("','", TilauksetMaPe.Select(n => n.CategoryName).ToList()) + "'";
-            TilauksetMaPeList = string.Join(",", TilauksetMaPe.Select(n => n.CategorySales).ToList());
+            daysMaPeList = "'" + string.Join("','", TilauksetMaPeList.Select(n => n.viikkopaiva).ToList()) + "'";
+            tilauksetMaPeList = string.Join(",", TilauksetMaPeList.Select(n => n.number_of_orders).ToList());
 
-            ViewBag.daysMaPe = daysMaPe;
-            ViewBag.TilauksetMaPe = TilauksetMaPe;
+            ViewBag.daysMaPe = daysMaPeList;
+            ViewBag.TilauksetMaPe = tilauksetMaPeList;
             return View();
         }
 

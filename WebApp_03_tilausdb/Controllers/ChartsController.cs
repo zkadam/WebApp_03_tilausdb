@@ -46,6 +46,31 @@ namespace WebApp_03_tilausdb.Controllers
 
 
 
+        public ActionResult top10tuote()
+        {
+
+            string topProductNamesList;
+            string productsSaleSumList;//huom pieni t alussa eli tää on vain string
+            List<top10class> Top10ProductsList = new List<top10class>();
+
+            var bestProds = from arkis in db.top10_tuote_income
+                            select arkis;
+            foreach (top10_tuote_income topTuote in bestProds)
+            {
+                top10class yksKentta = new top10class();
+                yksKentta.product_name = topTuote.product_name;//nämä ovat databasein tableviewin kentät
+                yksKentta.income_from_product = topTuote.income_from_product;//nämä ovat databasein tableviewin kentät
+                Top10ProductsList.Add(yksKentta);
+            }
+            //string joinnilla viedään kaikki list elementtit kaks string riviin x ja y varteen- laitetaan pilkut ja qmarksit väliin
+            topProductNamesList = "'" + string.Join("','", Top10ProductsList.Select(n => n.product_name).ToList()) + "'";
+            productsSaleSumList = string.Join(",", Top10ProductsList.Select(n => n.income_from_product).ToList());
+
+            ViewBag.productNames = topProductNamesList;
+            ViewBag.saleSumList = productsSaleSumList;
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -7,9 +7,9 @@
 @section scripts{
 
     <script type="text/javascript">
-
-        let labelTexts = [@Html.Raw(ViewBag.daysMaPe)];
-        let dataValues = [@ViewBag.TilauksetMaPe];
+       
+        let labelTexts = [@Html.Raw(ViewBag.productNames)];
+        let dataValues = [@ViewBag.saleSumList];
 
 var ctx = document.getElementById('barcanvas').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -55,7 +55,7 @@ var myChart = new Chart(ctx, {
 
 
 @*-------------------------------------------needs jquery to import data*@
-<h2>Tilaumääriä arkipäivissä</h2>
+<h2>TOP 10 tuoteet</h2>
 
 
 

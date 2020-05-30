@@ -184,6 +184,7 @@
     </Compile>
     <Compile Include="ViewModel\arkiMyyntiClass.cs" />
     <Compile Include="ViewModel\TilausRivit.cs" />
+    <Compile Include="ViewModel\top10class.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -375,6 +376,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Charts\TilausMaariaArkipaivissa.cshtml" />
+    <Content Include="Views\Charts\top10tuote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

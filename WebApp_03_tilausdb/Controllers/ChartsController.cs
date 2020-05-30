@@ -59,7 +59,7 @@ namespace WebApp_03_tilausdb.Controllers
             {
                 top10class yksKentta = new top10class();
                 yksKentta.product_name = topTuote.product_name;//nämä ovat databasein tableviewin kentät
-                yksKentta.income_from_product = topTuote.income_from_product;//nämä ovat databasein tableviewin kentät
+                yksKentta.income_from_product = (int)topTuote.income_from_product;//nämä ovat databasein tableviewin kentät
                 Top10ProductsList.Add(yksKentta);
             }
             //string joinnilla viedään kaikki list elementtit kaks string riviin x ja y varteen- laitetaan pilkut ja qmarksit väliin
